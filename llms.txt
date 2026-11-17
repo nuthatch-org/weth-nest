@@ -1,0 +1,38 @@
+# nuthatch nest on mainnet
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `weth` = 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+
+## Tables (one per contract event, plus any `[extract]` table)
+- `weth__approval` - Approval(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, src, guy, wad)
+- `weth__deposit` - Deposit(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, dst, wad)
+- `weth__transfer` - Transfer(address,address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, src, dst, wad)
+- `weth__withdrawal` - Withdrawal(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, src, wad)
+
+## SQL types
+- `uint`/`int` columns wider than 64 bits are exact decimal text: never `SUM` the raw column.
+  `<col>_dec` is the value as `DECIMAL(38,0)`, NULL when it does not fit (`<col>_overflow` is
+  then true). Ids, nonces and hashes stay on the raw column.
+- `bool` columns are text `'true'`/`'false'`: write `col = 'true'` or `CAST(col AS BOOLEAN)`.
+- Reserved-word columns such as `"from"` and `"to"` must be double-quoted.
+- Call the MCP `schema` tool first: it lists the `_dec`, bool and reserved columns.
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`, and each
+                             authored view (`views/*.sql`) answers by its own name
+- `GET /balances?limit=N`    top balances: net flow since `start_block`, holders only when `GET /` says `history_from_deployment: true` (false or null means net flow)
+- `GET /balance/{address}`   one address's derived balance, on the same condition. That flag means indexed from the configured `start_block` with no `--backfill`: the deployment only if `start_block` is the deployment block, which `init` sets
+- `GET /queries`             the mount's SQL mode and the queries its operator declared in
+                             `mounts.toml` (none on an open nest); `GET /q/{name}` runs one
+- `GET /derived`             the nest's incremental entities (`entities.toml`); `GET /derived/{entity}` reads one
+- `GET /diff?from=X&to=Y`    what happened in a range (`block=N`, or `tx=0x..&block=N`), as JSON, `format=text` or `markdown`
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, explain, entity, diff, balance, top_balances.
+Fully offline against the local instance; nothing phones home.

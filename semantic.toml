@@ -1,0 +1,64 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "Wrapped Ether (WETH9) on Ethereum mainnet, 0xC02a...6Cc2: wraps (Deposit), unwraps (Withdrawal), transfers and approvals. Amounts have 18 decimals."
+
+[table.weth__approval]
+description = "`Approval(address,address,uint256)` events emitted by the `weth` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Approval(address,address,uint256) event"
+
+[table.weth__approval.columns]
+guy = "The `guy` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+src = "The `src` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+wad = "The `wad` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.weth__approval.footguns]
+big_ints = ["wad"]
+overflows_dec = ["wad"]
+
+[table.weth__deposit]
+description = "`Deposit(address,uint256)` events emitted by the `weth` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Deposit(address,uint256) event"
+
+[table.weth__deposit.columns]
+dst = "The `dst` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+wad = "The `wad` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.weth__deposit.footguns]
+big_ints = ["wad"]
+overflows_dec = ["wad"]
+
+[table.weth__transfer]
+description = "`Transfer(address,address,uint256)` events emitted by the `weth` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Transfer(address,address,uint256) event"
+
+[table.weth__transfer.columns]
+dst = "The `dst` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+src = "The `src` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+wad = "The `wad` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.weth__transfer.footguns]
+big_ints = ["wad"]
+overflows_dec = ["wad"]
+
+[table.weth__withdrawal]
+description = "`Withdrawal(address,uint256)` events emitted by the `weth` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Withdrawal(address,uint256) event"
+
+[table.weth__withdrawal.columns]
+src = "The `src` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+wad = "The `wad` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.weth__withdrawal.footguns]
+big_ints = ["wad"]
+overflows_dec = ["wad"]
+
+[view.wrap_flow_hourly]
+description = "Wrap and unwrap events per hour and kind, with net_raw (18 decimals, negative for unwraps). hour is the unix time the hour starts."
+
+[view.wraps]
+description = "One row per Deposit (kind wrap) or Withdrawal (kind unwrap): account and amount_raw (18 decimals, negative for an unwrap). sum(amount_raw) over a block range is the change in totalSupply across it."

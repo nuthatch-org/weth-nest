@@ -1,0 +1,16 @@
+[nest]
+name = "weth"
+chain = "mainnet"
+chain_id = 1
+rpc_urls = [
+    "https://mainnet.gateway.tenderly.co",
+    "https://rpc.mevblocker.io",
+]
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "weth"
+address = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+start_block = 4719568
+abi = "abis/weth.json"

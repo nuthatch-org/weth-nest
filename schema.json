@@ -1,0 +1,265 @@
+{
+  "registry_hash": "0xc7ae1bfbc3570e6dcdb5e8887ba6ff94e9dc9351cee8d76dd0c990a7431d2f41",
+  "tables": [
+    {
+      "table": "weth__approval",
+      "alias": "weth",
+      "event": "Approval(address,address,uint256)",
+      "topic0": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "src",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "guy",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "wad",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "weth__deposit",
+      "alias": "weth",
+      "event": "Deposit(address,uint256)",
+      "topic0": "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "dst",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "wad",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "weth__transfer",
+      "alias": "weth",
+      "event": "Transfer(address,address,uint256)",
+      "topic0": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "src",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "dst",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "wad",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    },
+    {
+      "table": "weth__withdrawal",
+      "alias": "weth",
+      "event": "Withdrawal(address,uint256)",
+      "topic0": "0x7fcf532c15f0a6db0bd6d0e038bea71d30d808c7d98cb3bf7268a95bf5081b65",
+      "columns": [
+        {
+          "name": "block_number",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "block_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "block_timestamp",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "tx_hash",
+          "sol_type": "implicit",
+          "storage": "bytes32",
+          "indexed": false
+        },
+        {
+          "name": "log_index",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "address",
+          "sol_type": "implicit",
+          "storage": "address",
+          "indexed": false
+        },
+        {
+          "name": "_seq",
+          "sol_type": "implicit",
+          "storage": "u64",
+          "indexed": false
+        },
+        {
+          "name": "src",
+          "sol_type": "address",
+          "storage": "address",
+          "indexed": true
+        },
+        {
+          "name": "wad",
+          "sol_type": "uint256",
+          "storage": "word32",
+          "indexed": false
+        }
+      ]
+    }
+  ]
+}
